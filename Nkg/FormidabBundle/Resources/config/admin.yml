@@ -1,0 +1,34 @@
+services:
+#forms
+    sonata.admin.forms:
+        class: Nkg\FormidabBundle\Admin\FormAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "FormiDab", label: "Forms" }
+        arguments:
+            - ~
+            - Nkg\FormidabBundle\Entity\Formulaire
+            - ~
+        calls:
+            - [ setTranslationDomain, [NkgFormidabBundle]]
+#fields
+    sonata.admin.fields:
+        class: Nkg\FormidabBundle\Admin\FieldAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "FormiDab", label: "Fields" }
+        arguments:
+            - ~
+            - Nkg\FormidabBundle\Entity\Field
+            - ~
+        calls:
+            - [ setTranslationDomain, [NkgFormidabBundle]]
+#listitem
+    sonata.admin.listitem:
+        class: Nkg\FormidabBundle\Admin\ListitemAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "FormiDab", label: "List/options item" }
+        arguments:
+            - ~
+            - Nkg\FormidabBundle\Entity\Listitem
+            - ~
+        calls:
+            - [ setTranslationDomain, [NkgFormidabBundle]]

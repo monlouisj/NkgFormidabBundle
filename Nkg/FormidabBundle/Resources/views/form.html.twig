@@ -1,0 +1,16 @@
+{{ form_start(form) }}
+    {{ form_errors(form) }}
+
+    <h1>{{formconf.description}}</h1>
+    {% for key, conf in formconf %}
+      <div class="form-group">
+        {% if not conf.hidelabel %}<label>888{{conf.label}}</label>{% endif %}
+        {{ form_widget(form[conf.name],{'attr':{'class':'form-control'}}) }}
+        {{ form_errors(form[conf.name]) }}
+      </div>
+    {% endfor %}
+
+    <div class="form-group">
+        <button class="btn btn-primary" type="submit" name="submit">VALIDER</button>
+    </div>
+{{ form_end(form) }}

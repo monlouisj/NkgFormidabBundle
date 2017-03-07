@@ -1,0 +1,130 @@
+<?php
+
+namespace Nkg\FormidabBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Fieldvalue
+ *
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="Nkg\FormidabBundle\Entity\FieldvalueRepository")
+ */
+class Fieldvalue
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="field", type="string", length=255)
+     */
+    private $field;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="value", type="string", length=255)
+     */
+    private $value;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="identifiant", type="string", length=255)
+     */
+    private $identifiant;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="\Nkg\FormidabBundle\Entity\Formulaire", inversedBy="form")
+     * @ORM\JoinColumn(name="form_id", referencedColumnName="id")
+     */
+    private $form;
+
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set field
+     *
+     * @param string $field
+     * @return Fieldvalue
+     */
+    public function setField($field)
+    {
+        $this->field = $field;
+
+        return $this;
+    }
+
+    /**
+     * Get field
+     *
+     * @return string
+     */
+    public function getField()
+    {
+        return $this->field;
+    }
+
+    /**
+     * Set value
+     *
+     * @param string $value
+     * @return Fieldvalue
+     */
+    public function setValue($value)
+    {
+        $this->value = $value;
+
+        return $this;
+    }
+
+    /**
+     * Get value
+     *
+     * @return string
+     */
+    public function getValue()
+    {
+        return $this->value;
+    }
+
+    /**
+     * Set form
+     *
+     * @param \Nkg\FormidabBundle\Entity\Formulaire $form
+     * @return Fieldvalue
+     */
+    public function setForm(\Nkg\FormidabBundle\Entity\Formulaire $form = null)
+    {
+        $this->form = $form;
+
+        return $this;
+    }
+
+    /**
+     * Get form
+     *
+     * @return \Nkg\FormidabBundle\Entity\Formulaire
+     */
+    public function getForm()
+    {
+        return $this->form;
+    }
+}
